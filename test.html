@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <style>
+        .yellow { background: wheat};
+        </style>
+  <body>
+     <ul class="pets">
+        <li>Cat</li>
+        <li>Dog</li>
+        <li>Bird</li>
+        <li>Pig</li>
+        <li>Fish</li>
+        <li>Rat</li>
+     </ul>
+
+<button onclick="deleteLast()">Delete Last</button>
+<button onclick="shiftUpNode()">Shift Last Up</button>
+<button onclick="shiftDownNode()">Shift First Down</button>
+
+    <script>
+/*
+// get the second unordered list
+var carList = document.getElementsByTagName('ul')[1];
+// get the second car in the second unordered list
+var secondCar = carList.getElementsByTagName('li')[1];
+
+//console.log(secondCar.textContent); // Nissan
+
+// get the list of DIVs of class "stones"
+var gemStones = document.querySelector('.stones');
+// get the last div element in stones 
+var lastGem = gemStones.childNodes[1]; // <div id="diamond">Diamond</div> 
+
+//console.log(lastGem.textContent); // Diamond
+
+gemStones.classList.add('yellow');
+//console.log(gemStones);
+
+lastGem.textContent = "Pearl";
+
+//console.log(lastGem.textContent);
+
+// create another gemstone div
+var sapphire = document.createElement('div');
+sapphire.id = "sapphire";
+sapphire.textContent = "Sapphire";
+gemStones.appendChild(sapphire);
+//console.log(gemStones);
+*/
+
+var pets = document.querySelector('.pets');
+var newNodes = [];
+
+var firstPet = pets.childNodes[1].textContent;
+// var firstPet = pets.firstChild;
+for (var i=0; i<pets.length; i++){
+    if (pets.childNodes[i].nodeType!==3)
+        newNodes = newNodes.push(pets.childNodes[i]);
+}
+
+console.log(newNodes);
+
+function deleteLast(){
+    var ndType = pets.lastChild.nodeType;
+    if (ndType!==3)
+        pets.removeChild(pets.lastChild);
+    else{
+        pets.removeChild(pets.lastChild);
+        pets.removeChild(pets.lastChild);
+    }
+}
+
+function shiftDownNode(){
+    // move Cat to below Dog
+
+}
+
+// to move last one up one
+function shiftUpNode(){
+    // create the node to insertBefore
+    var lastNode = pets.childNodes[11];
+    
+    // get a reference to the parent node
+    // 'pets' is the variable for the parent node
+
+    // remove the last one
+    var moveBeforeThisOne = pets.childNodes[9];
+    pets.insertBefore(lastNode, moveBeforeThisOne);
+
+}
+
+    </script>
+
+  </body>
+</html>
